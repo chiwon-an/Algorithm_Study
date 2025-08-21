@@ -53,10 +53,10 @@ for tc in range(1, T+1):
     # for row in result:
         # print(row)
         # print(max(row))
-    # max_value = 0
-    # for row in result:
-    #     for i in row:
-    #         # print(i)
-    #         max_value = max(max_value, i)
-    print(*result)
-    # print(f'#{tc} {max_value}')
+    max_value = 0
+    for row in result:
+        for i in row:
+            # print(i)
+            max_value = max(max_value, i)
+     
+    print(f'#{tc} {max_value}')
