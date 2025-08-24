@@ -49,19 +49,19 @@ for tc in range(1, T + 1):
     N, M = map(int, input().split())
     parent = make_set(N)
     # print(parent)
-    # ★ M쌍(= 2*M개 숫자)을 전부 모을 때까지 읽기
-    nums = []
-    while len(nums) < 2 * M:
-        nums += list(map(int, input().split()))
+    nums = list(map(int, input().split()))
 
     for i in range(0, 2 * M, 2):
         union(nums[i], nums[i + 1])
+        # print(parent)
 
-    # ★ 모든 노드에 대해 최종 루트로 정규화
+    # # 모든 노드에 대해 최종 루트로 정규화
     for i in range(1, N + 1):
         find_set_pc(i)
+    # 현재 테스트 케이스에선 오류가 없지만
+    # 2 3 1 2 순서로 신청서 정보를 받을 경우
+    # parent 리스트가 [0, 1, 1, 2, 4]로 바뀌면서 잘못된 값을 출력할 수 있음
 
-    # 방법 B: 고유 루트값 종류 수
     groups = len(set(parent[1:]))
 
     print(f'#{tc} {groups}')

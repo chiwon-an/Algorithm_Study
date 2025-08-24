@@ -34,6 +34,7 @@ def floyd_warshall(graph):
                 if Dik + Dkj < Dij:
                     graph[start][end] = Dik + Dkj
 
+            # print(graph)
     return graph
 
 INF = float('inf')
@@ -43,6 +44,9 @@ T = int(input())
 for tc in range(1, T+1):
     N = int(input())
     adj_matrix = [list(map(int, input().split())) for _ in range(N)]
+    # print(adj_matrix)
+
+    # 본인이 본인 노드로 가는 경우가 아닌 경우의 값이 0인 경우는 인접하지 않는 경우로, inf로 변경
     for i in range(N):
         for j in range(N):
             if i != j and adj_matrix[i][j] == 0:
@@ -50,10 +54,9 @@ for tc in range(1, T+1):
     # print(adj_matrix)
 
     result = floyd_warshall(adj_matrix)
-    # for row in result:
-        # print(row)
-        # print(max(row))
+
     max_value = 0
+    # 행렬 값 중 가장 큰 값을 max_value에 저장
     for row in result:
         for i in row:
             # print(i)
