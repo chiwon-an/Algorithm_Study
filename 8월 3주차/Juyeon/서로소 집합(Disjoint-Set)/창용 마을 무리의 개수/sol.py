@@ -37,14 +37,20 @@ T = int(input())
 for tc in range(1, T+1):
     N, M = map(int, input().split())
 
+    # 부모 리스트 생성
     parent = make_set(N)
+    # print(parent)
+    
+    # 서로 알고 있는 두 사람의 번호 정보 받고 union 실행
     for i in range(M):
         x, y = map(int, input().split())
         union(x, y)
 
-    # print(parent)
+        # print(parent)
 
-    groups = { find_set_pc(i) for i in range(1, N+1)}
+    # 모든 노드에 대해 최종 루트로 정규화
+    groups = {find_set_pc(i) for i in range(1, N+1)}
+    # print(groups)
     print(f'#{tc} {len(groups)}')
     # print(parent)
     # print(f'#{tc} {len(set(parent))-1}')
