@@ -33,9 +33,13 @@ def dijkstra(graph, start):
     while heap:
         dist, currrent = heapq.heappop(heap)
 
+        # 방문한 적이 있거나, 지금까지의 합산이 distances의 값보다 크면 continue
         if currrent in visited or distances[currrent] < dist: continue
+
+        # 위가 아니라면 방문 표시
         visited.add(currrent)
 
+        
         for next, weight in graph[currrent].items():
             next_distance = dist + weight
 
@@ -73,6 +77,7 @@ for tc in range(1, T+1):
     result = dijkstra(adj_list, 0)
     print(f'#{tc} {result[N]}')
 
+    # print(result)
     # print(adj_list)
     '''
     {
@@ -81,4 +86,3 @@ for tc in range(1, T+1):
     2: {}
     }
     '''
-

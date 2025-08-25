@@ -71,6 +71,7 @@ for tc in range(1,T+1):
     kruskal(edges)
 
     ans = 0
+    print(mst)
     for i in range(len(mst)):
         ans += mst[i][0]
 
